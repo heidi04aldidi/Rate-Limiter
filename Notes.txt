@@ -1,0 +1,8 @@
+1. each userID (our ip address here) is mapped with an object. ie, the userID acts as the key and the object contains the required variables for that user like..
+- count = 1
+- time = now()
+
+eg: 1072.0.0.1 = {
+    count = 1,
+    time = now()
+}

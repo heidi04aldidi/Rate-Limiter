@@ -20,4 +20,27 @@ class RateLimiter {
         this.windowMs = windowMS;
         this.map = new Map();
     }
+    isAllowed(userID){
+        const now = Date.now();
+        if (!this.map.has(userID)) {
+            this.map.set(userID, {
+                count: 1,
+                startTime: now
+            })
+            return true;
+    }
+    const userData = this.map.get(userID)
+    //Reset Window
+    if (now - userData.startTime > this.windowMs) {
+        userData.count = 1;
+        userData.startTime = now;
+        return true;
+    }
+    //Limit Check
+    if (userData.count > this.limit){
+        return false;
+    }
+    userData.count++;
+    return true;
+    }
 }
