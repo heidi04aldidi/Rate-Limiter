@@ -7,11 +7,17 @@ app.get('/', (req, res) => {
     res.send('Hello!');
 });
 
-function RateLimiter(req, res, next){
-    console.log('RateLimiter initialized');
-    next();
-}
-
 app.listen(3000, () => {
     console.log('App listening on port 3000!');
 });
+
+class RateLimiter {
+    limit;
+    windowMS;
+    map;
+    constructor(limit, windowMS) {
+        this.limit = limit;
+        this.windowMs = windowMS;
+        this.map = new Map();
+    }
+}
