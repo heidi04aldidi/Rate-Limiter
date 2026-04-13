@@ -1,6 +1,11 @@
 const express = require('express');
 const app = express();
-app.use(RateLimiter);
+app.use((req, res, next)=> { //next is used to move to the next middleware or route handler
+    if (limiter.isAllowed(req.ip)) {
+        return next();
+    }
+    return res.status(429).send('Too Many Requests');
+});
 
 app.get('/', (req, res) => {
     console.log('Server Hit')
@@ -40,7 +45,10 @@ class RateLimiter {
     if (userData.count > this.limit){
         return false;
     }
+    //Increment Count
     userData.count++;
     return true;
     }
 }
+
+const limiter = new RateLimiter(3, 10000); // 3 requests per 10 seconds

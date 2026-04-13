@@ -6,3 +6,5 @@ eg: 1072.0.0.1 = {
     count = 1,
     time = now()
 }
+
+2. if userID doesn't exist in map, we initialise the userID object with the default initial values like count = 1, startTime = now
