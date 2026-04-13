@@ -7,8 +7,9 @@ app.use((req, res, next)=> { //next is used to move to the next middleware or ro
     return res.status(429).send('Too Many Requests');
 });
 
+let counter = 0;
 app.get('/', (req, res) => {
-    console.log('Server Hit')
+    console.log('Server Hit -', counter++);
     res.send('Hello!');
 });
 

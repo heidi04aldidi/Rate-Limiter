@@ -8,3 +8,13 @@ eg: 1072.0.0.1 = {
 }
 
 2. if userID doesn't exist in map, we initialise the userID object with the default initial values like count = 1, startTime = now
+
+3.can use "express-rate-limit" library to implement directly in our projects
+(https://www.npmjs.com/package/express-rate-limit)
+
+4. Implemented"Fixed-window-counter" algorithm
+- some other algorithms in ratelimiter execution :
+* sliding window log
+* sliding window counter
+* token bucket
+* leaky bucket etc..
